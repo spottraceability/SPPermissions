@@ -29,7 +29,7 @@ public class SPPermissionDeniedAlertData: NSObject {
     /**
      Title of alert.
      */
-    public var alertOpenSettingsDeniedPermissionTitle: String = "Permission denied"
+    public var alertOpenSettingsDeniedPermissionTitle: String = "Permission Denied"
     
     /**
      Subtitle of alert.

@@ -127,11 +127,18 @@ public class SPPermissionTableViewCell: UITableViewCell {
         button.permission = permission
         button.allowTitle = SPPermissionsText.allow
         button.allowedTitle = SPPermissionsText.allowed
+        button.deniedTitle = SPPermissionsText.denied
         button.allowTitleColor = SPPermissionsColor.base
         button.allowBackgroundColor = SPPermissionsColor.buttonArea
         button.allowedTitleColor = SPPermissionsColor.white
+        button.deniedTitleColor = SPPermissionsColor.darkGray
         button.allowedBackgroundColor = SPPermissionsColor.base
-        button.style = permission.isAuthorized ? SPPermissionActionButton.Style.allowed : SPPermissionActionButton.Style.base
+        
+        if permission.isDenied {
+            button.style = .denied
+        } else {
+            button.style = permission.isAuthorized ? SPPermissionActionButton.Style.allowed : SPPermissionActionButton.Style.base
+        }
         
         iconView.permission = permission
         iconView.color = button.allowedBackgroundColor

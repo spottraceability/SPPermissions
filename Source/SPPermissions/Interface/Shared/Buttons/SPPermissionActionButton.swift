@@ -44,6 +44,11 @@ public class SPPermissionActionButton: UIButton {
     public var allowTitleColor: UIColor = SPPermissionsColor.base { didSet { applyStyle() } }
     
     /**
+     Title of button when permission denied.
+     */
+    public var deniedTitle: String = SPPermissionsText.denied { didSet { applyStyle() } }
+    
+    /**
      Background button color when permissin not authorized yet.
      */
     public var allowBackgroundColor: UIColor = SPPermissionsColor.buttonArea { didSet { applyStyle() } }
@@ -52,6 +57,11 @@ public class SPPermissionActionButton: UIButton {
      Title color for button when permissin authorized.
      */
     public var allowedTitleColor: UIColor = SPPermissionsColor.white { didSet { applyStyle() } }
+    
+    /**
+     Title color for button when permissin denied.
+     */
+    public var deniedTitleColor: UIColor = SPPermissionsColor.darkGray { didSet { applyStyle() } }
     
     /**
      Background button color when permission authorized.
@@ -74,7 +84,7 @@ public class SPPermissionActionButton: UIButton {
                 setTitle(allowTitle, for: .normal)
                 setTitleColor(allowTitleColor, for: .normal)
                 setTitleColor(allowTitleColor.withAlphaComponent(0.7), for: .highlighted)
-                backgroundColor = self.allowBackgroundColor
+                backgroundColor = allowBackgroundColor
                 titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
                 contentEdgeInsets = UIEdgeInsets.init(top: 6, left: 15, bottom: 6, right: 15)
             case .allowed:
@@ -82,6 +92,13 @@ public class SPPermissionActionButton: UIButton {
                 backgroundColor = allowedBackgroundColor
                 setTitleColor(allowedTitleColor, for: .normal)
                 setTitleColor(allowedTitleColor.withAlphaComponent(0.7), for: .highlighted)
+                titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+                contentEdgeInsets = UIEdgeInsets.init(top: 6, left: 15, bottom: 6, right: 15)
+            case .denied:
+                setTitle(deniedTitle, for: .normal)
+                backgroundColor = allowBackgroundColor
+                setTitleColor(deniedTitleColor, for: .normal)
+                setTitleColor(deniedTitleColor.withAlphaComponent(0.7), for: .highlighted)
                 titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
                 contentEdgeInsets = UIEdgeInsets.init(top: 6, left: 15, bottom: 6, right: 15)
             }
@@ -105,7 +122,11 @@ public class SPPermissionActionButton: UIButton {
      */
     public func update() {
         UIView.animate(withDuration: 0.3, animations: {
-            self.style = self.permission.isAuthorized ? .allowed : .base
+            if self.permission.isDenied {
+                self.style = .denied
+            } else {
+                self.style = self.permission.isAuthorized ? .allowed : .base
+            }
         })
     }
     
@@ -120,6 +141,7 @@ public class SPPermissionActionButton: UIButton {
     enum Style {
         case base
         case allowed
+        case denied
     }
 }
 #endif
