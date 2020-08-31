@@ -40,6 +40,8 @@ import UIKit
     case motion = 11
     case mediaLibrary = 12
     case bluetooth = 13
+    case analytics = 99
+    case crashReport = 98
     #endif
     case notification = 2
     case locationWhenInUse = 9
@@ -102,6 +104,10 @@ import UIKit
             return "NSAppleMusicUsageDescription"
         case .bluetooth:
             return "NSBluetoothAlwaysUsageDescription"
+        case .analytics:
+            return nil
+        case .crashReport:
+            return nil
             #endif
         case .notification:
             return nil
@@ -124,6 +130,18 @@ extension SPPermission {
         case .camera:
             #if SPPERMISSION_CAMERA
             return SPCameraPermission()
+            #else
+            fatalError(error(permission))
+            #endif
+        case .analytics:
+            #if SPPERMISSION_ANALYTICS
+            return SPSpotAnalyticsPermission()
+            #else
+            fatalError(error(permission))
+            #endif
+        case .crashReport:
+            #if SPPERMISSION_CRASHREPORT
+            return SPSpotAnalyticsPermission()
             #else
             fatalError(error(permission))
             #endif
@@ -183,7 +201,7 @@ extension SPPermission {
             #endif
         case .bluetooth:
             #if SPPERMISSION_BLUETOOTH
-            return SPBluetoothPermission()
+            return SPBluetoothPermission.shared
             #else
             fatalError(error(permission))
             #endif

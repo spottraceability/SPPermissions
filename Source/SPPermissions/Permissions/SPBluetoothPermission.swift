@@ -30,6 +30,8 @@ class SPBluetoothPermission: NSObject, SPPermissionProtocol {
     private var completion: SPBluetoothPermissionHandler?
     private var manager: CBCentralManager?
     
+    static let shared = SPBluetoothPermission()
+        
     var isAuthorized: Bool {
         if #available(iOS 13.0, *) {
             return CBCentralManager().authorization == .allowedAlways
@@ -61,7 +63,8 @@ extension SPBluetoothPermission: CBCentralManagerDelegate {
                 self.completion?()
             }
         } else {
-            switch CBPeripheralManager.authorizationStatus() {
+            let authStatus = CBPeripheralManager.authorizationStatus()
+            switch authStatus {
             case .notDetermined:
                 break
             default:

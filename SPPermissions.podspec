@@ -26,6 +26,16 @@ Pod::Spec.new do |s|
     cm.dependency 'SPPermissions/Core'
     cm.pod_target_xcconfig = { "SWIFT_ACTIVE_COMPILATION_CONDITIONS"  => "SPPERMISSION_CAMERA" }
   end
+  
+  s.subspec 'Analytics' do |cm|
+    cm.dependency 'SPPermissions/Core'
+    cm.pod_target_xcconfig = { "SWIFT_ACTIVE_COMPILATION_CONDITIONS"  => "SPPERMISSION_ANALYTICS" }
+  end
+  
+  s.subspec 'CrashReport' do |cm|
+    cm.dependency 'SPPermissions/Core'
+    cm.pod_target_xcconfig = { "SWIFT_ACTIVE_COMPILATION_CONDITIONS"  => "SPPERMISSION_CRASHREPORT" }
+  end
 
   s.subspec 'PhotoLibrary' do |pl|
     pl.dependency 'SPPermissions/Core'

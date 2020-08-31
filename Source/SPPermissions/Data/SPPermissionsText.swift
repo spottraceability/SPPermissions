@@ -48,6 +48,10 @@ enum SPPermissionsText {
             return "Media Library"
         case .bluetooth:
             return "Bluetooth"
+        case .analytics:
+            return "Analytics"
+        case .crashReport:
+            return "Crash Report"
         #endif
         case .notification:
             return "Notification"
@@ -83,6 +87,11 @@ enum SPPermissionsText {
             return "Allow to check your media"
         case .bluetooth:
             return "Allow access to bluetooth"
+        case .analytics:
+            return "Allow the application to collect usage analytics to improve your experience"
+        case .crashReport:
+            return "Allow the application to collect and report crash data to improve your experience"
+
         #endif
         case .notification:
             return "Get important information without opening app."
