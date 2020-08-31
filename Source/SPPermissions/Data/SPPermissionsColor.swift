@@ -24,7 +24,8 @@ import UIKit
 enum SPPermissionsColor {
     
     static var base: UIColor {
-        return UIColor.systemBlue
+        return UIColor(red: 46 / 255.0, green: 0 / 255.0, blue: 139 / 255.0, alpha: 1.0)
+        //return UIColor.systemBlue
     }
     
     static var black: UIColor {
@@ -33,6 +34,10 @@ enum SPPermissionsColor {
     
     static var white: UIColor {
         return UIColor.white
+    }
+    
+    static var darkGray: UIColor {
+        return UIColor.darkGray
     }
     
     static var systemBackground: UIColor {

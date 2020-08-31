@@ -100,4 +100,5 @@ enum SPPermissionsText {
     
     static var allow: String = "Allow"
     static var allowed: String = "Allowed"
+    static var denied: String = "Denied"
 }

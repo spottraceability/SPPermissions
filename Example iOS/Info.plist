@@ -22,6 +22,10 @@
 	<true/>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Example Describtion</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Example Describtion</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Example Describtion</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Example Describtion</string>
 	<key>NSCameraUsageDescription</key>
@@ -41,10 +45,6 @@
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Example Describtion</string>
 	<key>NSMotionUsageDescription</key>
-	<string>Example Describtion</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Example Describtion</string>
-	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Example Describtion</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Example Describtion</string>
